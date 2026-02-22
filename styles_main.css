@@ -14,7 +14,7 @@
 .menuoptions a {
 	text-decoration: none;			/* This make the underline dissapiar (it doesnt look quite good with emojis) */
 }
-.body {
+body {
 	flex-direction: column;
 	background-color: Silver;
 	place-items: center;
@@ -60,3 +60,4 @@ h3 {
 	text-align: center;
 	margin: 0;
 }
+
