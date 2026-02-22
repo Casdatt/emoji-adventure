@@ -1,0 +1,61 @@
+.sidemenu {
+	position: fixed;
+	height: 100vh;
+	width: 12.5vw;
+	background-color: SlateGray;
+	top: 0;
+	left: 0;
+	max-width: 250px;
+}
+.menuoptions {
+	font-size: 20px;
+	margin-left: 40px;				/* A bit more separate from the left than the text of menu */
+}
+.menuoptions a {
+	text-decoration: none;			/* This make the underline dissapiar (it doesnt look quite good with emojis) */
+}
+.body {
+	flex-direction: column;
+	background-color: Silver;
+	place-items: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.box {								/* This class will generate a box so info can be put inside (as a separate class to reuse it) */
+	height: 50vh;
+	width: 64vw;					/* (100 - 12) -24 = 64 */
+	background-color: Gainsboro;
+	max-width: 1350px;
+	max-height: 540px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.txtbox {
+	display: flex;
+	flex-direction: row;
+}
+h1 {
+	text-align: center;
+	font-size: 70px;
+	color: RoyalBlue;
+}
+h3 {
+	text-align: left;
+	max-width: 50%;
+	font-size: 30px;
+	color: SteelBlue;
+}
+#arrows {
+	width: 40%;
+	height: auto;
+}
+#emj {
+	width: 40%;
+	height: auto;
+	font-size: 150px;
+	text-align: center;
+	margin: 0;
+}
