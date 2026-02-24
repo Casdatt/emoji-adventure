@@ -1,0 +1,171 @@
+body {
+	background-image: url("../Images/png-transparent-white-and-blue-sky-cloud-sky-rainbow-sky-background-blue-other-atmosphere.png");
+	background-repeat: repeat;
+	background-size: cover;
+}
+#blackscreen {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.7);
+	height: 110vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+#heartcontainer1, #heartcontainer2, #heartcontainer3 {
+	position: absolute;
+	font-size: 5vw;
+	left: 1vw;
+	z-index: -1;
+}
+#heartcontainer1 {
+	top: 7vh;
+} 
+#heartcontainer2 {
+	top: 17vh;
+}
+#heartcontainer3 {
+	top: 27vh;
+}
+.options {
+	display: flex;
+	height: 10vh;
+	width: 20vw;
+	margin-top: 10vh;
+	justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+.options:hover {
+	transform: scale(1.2);
+	background-color: green;
+}
+#Retry, #Return, #SHIT, #Resume, #PlayA {
+	border: 2px solid white;
+	height: 10vh;
+	width: 20vw;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+#Char {
+	position: absolute;
+	font-size: 4vw;
+	width: 4vw;
+	height: 7vh;
+	left: 4vw;
+	top: 22vh;
+	transition: transform 0.3s ease;
+	z-index: 1;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#timer {
+	z-index: 0;
+	position: absolute;
+	font-size: 4vw;
+}
+#three, #two, #one, #start {
+	z-index: 0;
+	left: 40%;
+	top: -20vh;
+	position: absolute;
+	font-size: 20vw;
+	color: darkblue;
+}
+#start {
+	left: 17vw;
+
+}
+#pause {
+	position: absolute;
+	font-size: 8vw;
+	top: -20vh;
+	left: 90vw;
+}
+h1 {
+	top: -8vh;
+	z-index: 3;
+	position: absolute;
+	font-size: 20vh;
+}
+#GameO {
+	left: 26vw;
+	color: red;
+}
+#Pas {
+	left: 38vw;
+	color: blueviolet;
+}
+#Win {
+	left: 20vw;
+	color: gold;
+}
+h2 {
+	color: lightcyan;
+	font-size: 4vh;
+}
+a {
+	text-decoration: none;
+}
+#wings {
+	z-index: 1;
+	position: absolute;
+	width: 16%;
+	height: auto;
+	z-index: -1;
+	left: -1.8vw;
+	top: 25vh;
+	transition: transform 0.3s ease;
+}
+#dragon {
+	position: absolute;
+	font-size: 70vh;
+	width: auto;
+	left: 73.3vw;
+	top: -60vh;
+}
+#meteor1, #meteor11, #meteor2, #meteor21, #meteor3, #meteor31 {
+	position: absolute;
+	font-size: 70vh;
+	width: 30vw;
+	height: 60vh;
+	top: -151vh;
+	overflow: visible;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#meteor1 {
+	left: 90vw;
+}
+#meteor11 {
+	left: 62.5vw;
+}
+#meteor2 {
+	left: 55vw;
+}
+#meteor21 {
+	left: 37.5vw;
+}
+#meteor3 {
+	left: 20vw;
+}
+#meteor31 {
+	left: 2.5vw;
+}
+.notr {
+	transition: all 0s !important;
+}
+.hitbox {
+	border: 2px solid red;
+}
+.hidden {
+	display: none !important;
+}
