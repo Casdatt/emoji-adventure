@@ -60,13 +60,13 @@ h3 {
 	margin-right: 50px;
 	text-align: left;
 	max-width: 50%;
-	font-size: 30px;
+	font-size: 1.9vw;
 	color: SteelBlue;
 }
 .nogap {
 	margin-top: 0;
 	margin-bottom: 0;
-	line-height: 0.8;
+	line-height: 1;
 }
 #wasd {
 	width: 30%;
@@ -86,3 +86,4 @@ h3 {
 .selected {
 	border: 2px solid green;
 }
+
