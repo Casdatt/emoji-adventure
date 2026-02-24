@@ -23,7 +23,7 @@ body {
 	justify-content: center;
 }
 .box {								/* This class will generate a box so info can be put inside (as a separate class to reuse it) */
-	height: 64vh;
+	height: 70vh;
 	width: 64vw;					/* (100 - 12) -24 = 64 */
 	background-color: Gainsboro;
 	max-width: 1350px;
@@ -40,7 +40,6 @@ body {
 	align-items: center;
 	justify-content: center;
     width: 100%;
-    padding: 20px;
 }
 h1 {
 	text-align: center;
@@ -62,6 +61,7 @@ h3 {
 #wasd {
 	width: 30%;
 	margin-right: 10%;
+	margin-left: 10%;
 }
 #emj {
 	width: 50%;
@@ -70,3 +70,4 @@ h3 {
 	text-align: center;
 	margin: 0;
 }
+
