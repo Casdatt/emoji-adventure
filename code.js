@@ -35,7 +35,7 @@ function Scode() {
 	let StoredTime = 0;
 	const hitelm = [Char, meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
 	let pas = "false"																			// checks if the game is paused or no
-	let won = "false"																			// checks if the player have won or no
+	let won = "true"																			// checks if the player have won or no
 	let over = "false"																			// checks if the player have died or no
 	let inv = "false";																			// inv controls whenever the player is invunerable
 	let meteorspeed = 6;
@@ -61,6 +61,7 @@ function Scode() {
 				one.classList.add("hidden")
 				start.classList.remove("hidden")
 				startTime();																		// Stars the timer after the 3,2,1,start
+				won = "false"
 			}, 1000)
 		}, 1000)
 	}, 1000)
@@ -381,5 +382,6 @@ function Scode() {
 		}
 	});
 }
+
 
 
