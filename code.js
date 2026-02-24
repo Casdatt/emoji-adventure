@@ -12,18 +12,186 @@ function MainCode() {
 	SGemj.textContent = `Second Game \u{1f43a}`;
 	TGemj.textContent = `Third Game \u{1f988}`;
 	FoGemj.textContent = `Fourth Game \u{1faa8}`;
-	let character = `\u{1f600}`;
-	let hurtcharacter = `\u{1f635}\u{200d}\u{1f4ab}`;
-	let deadcharacter = `\u{1f480}`;
-	let wincharacter = `\u{1f973}`;
-	let heartcontainer = `\u{1fa77}`; 
-	let damageheart = `\u{fe0f}\u{1f494}`;
-	localStorage.setItem("character", character);
-	localStorage.setItem("hurtcharacter", hurtcharacter);
-	localStorage.setItem("deadcharacter", deadcharacter);
-	localStorage.setItem("wincharacter", wincharacter);
-	localStorage.setItem("heartcontainer", heartcontainer);
-	localStorage.setItem("damageheart", damageheart);
+	
+	// functions to select skins
+	function characterselect(character) {
+		localStorage.setItem("character", character);		
+	}
+	function deadselect(deadcharacter) {
+		localStorage.setItem("deadcharacter", deadcharacter);		
+	}
+	function hurtselect(hurtcharacter) {
+		localStorage.setItem("hurtcharacter", hurtcharacter);	
+	}
+	function winselect(wincharacter) {
+		localStorage.setItem("wincharacter", wincharacter);
+	}
+	function heartcnselect(heartcontainer) {
+		localStorage.setItem("heartcontainer", heartcontainer);
+	}
+	function heartbrselect(damageheart) {
+		localStorage.setItem("damageheart", damageheart);		
+	}
+
+	if (document.getElementById("Skinpage")) {
+		if (localStorage.getItem("Achnohit") === "true") {
+			Nohitdr.classList.remove("hidden")
+		}
+		if (localStorage.getItem("Achbtdr") === "true") {
+			Beatdr.classList.remove("hidden")
+		}
+		const faceskins = document.querySelectorAll(".faces p");
+		const victoryskins = document.querySelectorAll(".victory p");
+		const hurtskins = document.querySelectorAll(".hurt p");
+		const defeatskins = document.querySelectorAll(".defeat p");
+		const heartcnskins = document.querySelectorAll(".heartcn p");
+		const heartbrskins = document.querySelectorAll(".heartbr p");
+		let savedface = localStorage.getItem("character")
+		let savedvic = localStorage.getItem("wincharacter")
+		let savedhurt = localStorage.getItem("hurtcharacter")
+		let saveddefeat = localStorage.getItem("deadcharacter")
+		let savedheartcn = localStorage.getItem("heartcontainer")
+		let savedheartbr = localStorage.getItem("damageheart")
+		let currentface;
+		let currentvic;
+		let currenthurt;
+		let currentdefeat;
+		let currentheartcn;
+		let currentheartbr;
+
+		Defaultface.textContent = `\u{1f600}`;
+		Defaultvic.textContent = `\u{1f973}`;
+		Defaulthurt.textContent = `\u{1f635}\u{200d}\u{1f4ab}`;
+		Defaultdefeat.textContent = `\u{1f480}`;
+		Defaultheartcn.textContent = `\u{1fa77}`;
+		Defaultheartbr.textContent = `\u{fe0f}\u{1f494}`;
+		Cowboy.textContent = `\u{1f920}`;
+		Beatdr.textContent = `\u{1f624}`;
+		Nohitdr.textContent = `\u{1f496}`
+
+
+		faceskins.forEach(skin => {
+			if (skin.textContent === savedface) {
+				currentface = skin
+			}
+		});
+
+		if (!currentface) {
+			currentface = document.getElementById("Defaultface");
+		}
+		
+		currentface.classList.add("selected")
+
+		faceskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currentface.classList.remove("selected");
+            	characterselect(this.textContent);
+            	this.classList.add("selected");
+            	currentface = this;
+        	};
+    	});
+    	victoryskins.forEach(skin => {
+			if (skin.textContent === savedvic) {
+				currentvic = skin
+			}
+		});
+
+		if (!currentvic) {
+			currentvic = document.getElementById("Defaultvic");
+		}
+		
+		currentvic.classList.add("selected")
+
+		victoryskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currentvic.classList.remove("selected");
+            	winselect(this.textContent);
+            	this.classList.add("selected");
+            	currentface = this;
+        	};
+    	});
+    	hurtskins.forEach(skin => {
+			if (skin.textContent === savedhurt) {
+				currenthurt = skin
+			}
+		});
+
+		if (!currenthurt) {
+			currenthurt = document.getElementById("Defaulthurt");
+		}
+		
+		currenthurt.classList.add("selected")
+
+		hurtskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currenthurt.classList.remove("selected");
+            	hurtselect(this.textContent);
+            	this.classList.add("selected");
+            	currenthurt = this;
+        	};
+    	});
+    	defeatskins.forEach(skin => {
+			if (skin.textContent === saveddefeat) {
+				currentdefeat = skin
+			}
+		});
+
+		if (!currentdefeat) {
+			currentdefeat = document.getElementById("Defaultdefeat");
+		}
+		
+		currentdefeat.classList.add("selected")
+
+		defeatskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currentdefeat.classList.remove("selected");
+            	deadselect(this.textContent);
+            	this.classList.add("selected");
+            	currentdefeat = this;
+        	};
+    	});
+
+    	heartcnskins.forEach(skin => {
+			if (skin.textContent === savedheartcn) {
+				currentheartcn = skin
+			}
+		});
+
+		if (!currentheartcn) {
+			currentheartcn = document.getElementById("Defaultheartcn");
+		}
+		
+		currentheartcn.classList.add("selected")
+
+		heartcnskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currentheartcn.classList.remove("selected");
+            	heartcnselect(this.textContent);
+            	this.classList.add("selected");
+            	currentheartcn = this;
+        	};
+    	});
+    	heartbrskins.forEach(skin => {
+			if (skin.textContent === savedheartbr) {
+				currentheartbr = skin
+			}
+		});
+
+		if (!currentheartbr) {
+			currentheartbr = document.getElementById("Defaultheartbr");
+		}
+		
+		currentheartbr.classList.add("selected")
+
+		heartbrskins.forEach(skin => {
+        	skin.onclick = function() {
+      	    	currentheartbr.classList.remove("selected");
+            	heartbrselect(this.textContent);
+            	this.classList.add("selected");
+            	currentheartbr = this;
+        	};
+    	});
+	}
 }
 
 
@@ -282,6 +450,10 @@ function Scode() {
 
 	function Winner() {
 		Char.textContent = `${wincharacter}`
+		if (cnt === 0) {
+			localStorage.setItem("Achnohit", "true");
+		}
+		localStorage.setItem("Achbtdr", "true");
 		won = "true"
 		inv = "true"
 		blackscreen.classList.remove("hidden");
@@ -382,6 +554,7 @@ function Scode() {
 		}
 	});
 }
+
 
 
 
