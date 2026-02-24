@@ -41,6 +41,16 @@ body {
 	justify-content: center;
     width: 100%;
 }
+.emjbox {
+	display: flex;
+	flex-direction: row;
+	font-size: 10vh;
+	position: absolute;
+	margin-left: 2vw;
+}
+.emjbox p:hover{
+	transform: scale(1.1);
+}
 h1 {
 	text-align: center;
 	font-size: 70px;
@@ -70,4 +80,9 @@ h3 {
 	text-align: center;
 	margin: 0;
 }
-
+.hidden {
+	display: none !important;
+}
+.selected {
+	border: 2px solid green;
+}
