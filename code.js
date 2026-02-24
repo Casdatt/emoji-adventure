@@ -330,8 +330,8 @@ function Scode() {
 		if (left) x-= 8;
 		if (down) y+= 8;
 		if (right) x+= 8;
-		if (x >= 72) {											// Limits check in multiples of 4, as the initial position and the movement are multiples of 4
-			x = 72
+		if (x >= 64) {											// Limits check in multiples of 4, as the initial position and the movement are multiples of 4
+			x = 64
 		} 
 		if (x <= -4) {
 			x = -4
@@ -381,4 +381,5 @@ function Scode() {
 		}
 	});
 }
+
 
