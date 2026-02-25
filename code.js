@@ -32,14 +32,25 @@ function MainCode() {
 	function heartbrselect(damageheart) {
 		localStorage.setItem("damageheart", damageheart);		
 	}
+	
+	if (document.getElementById("Achievementpage")) {
+		if (localStorage.getItem("Achnohit") === "true") {
+			Nohitdr.textContent = `\u{1f496}`;
+			}
+		if (localStorage.getItem("Achbtdr") === "true") {
+			Beatdr.textContent = `\u{1f624}`;
+			}	
+	}
 
 	if (document.getElementById("Skinpage")) {
+
 		if (localStorage.getItem("Achnohit") === "true") {
 			Nohitdr.classList.remove("hidden")
 		}
 		if (localStorage.getItem("Achbtdr") === "true") {
 			Beatdr.classList.remove("hidden")
 		}
+	
 		const faceskins = document.querySelectorAll(".faces p");
 		const victoryskins = document.querySelectorAll(".victory p");
 		const hurtskins = document.querySelectorAll(".hurt p");
@@ -554,6 +565,7 @@ function Scode() {
 		}
 	});
 }
+
 
 
 
