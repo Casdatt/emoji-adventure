@@ -56,6 +56,11 @@ h1 {
 	font-size: 70px;
 	color: RoyalBlue;
 }
+h2 {
+	margin-left: 1vw;
+	font-size: 1.9vw;
+	color: SteelBlue;
+}
 h3 {
 	margin-right: 50px;
 	text-align: left;
@@ -86,4 +91,5 @@ h3 {
 .selected {
 	border: 2px solid green;
 }
+
 
