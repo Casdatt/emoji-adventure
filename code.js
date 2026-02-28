@@ -235,6 +235,7 @@ function Scode() {
 	let wvspeed = 4;
 	let changehitbox = "false";																	// To change the hitbox depending if the meteor is going up or down (as it rotates 180	deegres)
 	let cnt = 0;																				// A countdown (in this case used to count the hits that the player have recieved)
+	let cntwv = 0;
 	let hit = localStorage.getItem("hit");														// Save the show hitbox setting, so the player dont have to put it on every time the page get reloaded
 	let cnthit = 0;																				// A countdown to know if the hitbox setting is on/off
 	let character = localStorage.getItem("character") || `\u{1f600}`;							// Can be changed in the main page (So players can select differents skins), I there is no emoji saved it will change into the default one 
@@ -482,9 +483,11 @@ function Scode() {
 // The wvattack fuction, first checks if the wolf is still attacking and only act if it is not. Then there is a 50% chance to start an attack. They can come from both direction but not as the same time.
 	function wvattack() {
 		const launchwolf = (wolf, inverse, bush) => {
+			if (cntwv === 5) return;
 			if (wolf.getAttribute('flying') === "true") return; 							
 	 		if (getRandomInt(2) === 0) {
-	 			
+
+				cntwv ++;
 	 			bush.style.transform = "scale(1.3)"
 	 			wolf.classList.remove("notr")
 	 			wolf.classList.remove("hidden")
@@ -505,6 +508,7 @@ function Scode() {
 	 			
 	 				setTimeout(() => {
                 		wolf.setAttribute('flying', "false");
+						cntwv --;
                 	}, 500)
                 
                 }, (1000 * wvspeed) + 1500);
@@ -755,6 +759,7 @@ function Scode() {
 		}
 	});
 }
+
 
 
 
