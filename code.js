@@ -698,7 +698,7 @@ function Scode() {
 					wings.classList.remove("notr");
 				}, 10);
 			}
-			wings.style.transform = `translate(${x-46.4}vw, ${y-20}vh)`
+			wings.style.transform = `translate(${x-43.4}vw, ${y-20}vh)`
 		}
 		else if (document.getElementById("Awv")) {
 			if (up) y-= 16;
@@ -751,4 +751,5 @@ function Scode() {
 		}
 	});
 }
+
 
