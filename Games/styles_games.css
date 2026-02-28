@@ -1,5 +1,4 @@
 body {
-	background-image: url("../Images/png-transparent-white-and-blue-sky-cloud-sky-rainbow-sky-background-blue-other-atmosphere.png");
 	background-repeat: repeat;
 	background-size: cover;
 }
@@ -21,7 +20,7 @@ body {
 	position: absolute;
 	font-size: 5vw;
 	left: 1vw;
-	z-index: -1;
+	z-index: 4;
 }
 #heartcontainer1 {
 	top: 7vh;
@@ -58,8 +57,6 @@ body {
 	font-size: 4vw;
 	width: 4vw;
 	height: 7vh;
-	left: 4vw;
-	top: 22vh;
 	transition: transform 0.3s ease;
 	z-index: 1;
 	display: flex;
@@ -67,6 +64,7 @@ body {
     align-items: center;
 }
 #timer {
+	color: lightcyan;
 	z-index: 0;
 	position: absolute;
 	font-size: 4vw;
@@ -78,6 +76,7 @@ body {
 	position: absolute;
 	font-size: 20vw;
 	color: darkblue;
+	z-index: 4;
 }
 #start {
 	left: 17vw;
@@ -88,6 +87,7 @@ body {
 	font-size: 8vw;
 	top: -20vh;
 	left: 90vw;
+	z-index: 6;
 }
 h1 {
 	top: -8vh;
@@ -120,7 +120,7 @@ a {
 	width: 16%;
 	height: auto;
 	z-index: -1;
-	left: -1.8vw;
+	left: 38vw;
 	top: 25vh;
 	transition: transform 0.3s ease;
 }
@@ -134,8 +134,8 @@ a {
 #meteor1, #meteor11, #meteor2, #meteor21, #meteor3, #meteor31 {
 	position: absolute;
 	font-size: 70vh;
-	width: 30vw;
-	height: 60vh;
+	width: 33vw;
+	height: 70vh;
 	top: -151vh;
 	overflow: visible;
 	display: flex;
@@ -160,6 +160,121 @@ a {
 #meteor31 {
 	left: 2.5vw;
 }
+#wolf img, #wolfinverse img {
+	width: 16vw;
+	height: 20vh;
+	position: absolute;
+	z-index: 2;
+}
+#wolf, #wolfinverse {
+	height: 0vh;
+}
+#bush img {
+	position: absolute;
+	width: 16vw;
+	height: 20vh;
+	z-index: 3;
+}
+#wolf1 {
+	top: -2vh;
+	left: -2vw;
+}
+#wolf2 {
+	top: 15vh;
+	left: -2vw;
+}
+#wolf3 {
+	top: 32vh;
+	left: -2vw;
+}
+#wolf4 {
+	top: 49vh;
+	left: -2vw;
+}
+#wolf5 {
+	top: 66vh;
+	left: -2vw;
+}
+#wolf6 {
+	top: 83vh;
+	left: -2vw;
+}
+#wolfinverse1 {
+	top: -2vh;
+	left: 85vw;
+}
+#wolfinverse2 {
+	top: 15vh;
+	left: 85vw;
+}
+#wolfinverse3 {
+	top: 32vh;
+	left: 85vw;
+}
+#wolfinverse4 {
+	top: 49vh;
+	left: 85vw;
+}
+#wolfinverse5 {
+	top: 66vh;
+	left: 85vw;
+}
+#wolfinverse6 {
+	top: 83vh;
+	left: 85vw;
+}
+#bush img {
+	transition: 0.2s ease;
+}
+#bush1 {
+	top: -2vh;
+	left: -2vw;
+}
+#bush2 {
+	top: 15vh;
+	left: -2vw;
+}
+#bush3 {
+	top: 32vh;
+	left: -2vw;
+}
+#bush4 {
+	top: 49vh;
+	left: -2vw;
+}
+#bush5 {
+	top: 66vh;
+	left: -2vw;
+}
+#bush6 {
+	top: 83vh;
+	left: -2vw;
+}
+#bush7 {
+	top: -2vh;
+	left: 85vw;
+}
+#bush8 {
+	top: 15vh;
+	left: 85vw;
+}
+#bush9 {
+	top: 32vh;
+	left: 85vw;
+}
+#bush10 {
+	top: 49vh;
+	left: 85vw;
+}
+#bush11 {
+	top: 66vh;
+	left: 85vw;
+}
+#bush12 {
+	top: 83vh;
+	left: 85vw;
+}
+
 .notr {
 	transition: all 0s !important;
 }
