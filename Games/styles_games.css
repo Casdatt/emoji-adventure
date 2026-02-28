@@ -65,7 +65,7 @@ body {
 }
 #timer {
 	color: lightcyan;
-	z-index: 0;
+	z-index: 7;
 	position: absolute;
 	font-size: 4vw;
 }
@@ -284,3 +284,4 @@ a {
 .hidden {
 	display: none !important;
 }
+
