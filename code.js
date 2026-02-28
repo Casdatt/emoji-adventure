@@ -300,7 +300,15 @@ function Scode() {
 	heartcontainer3.textContent = `${heartcontainer}`
 	pause.textContent = `\u{23f8}\u{fe0f}`;
 
-	if (document.getElementById("Gdr")) {			
+	if (document.getElementById("Gdr")) {
+		const dragon = document.getElementById("dragon");
+    	const meteor1 = document.getElementById("meteor1");
+    	const meteor11 = document.getElementById("meteor11");
+    	const meteor2 = document.getElementById("meteor2");
+    	const meteor21 = document.getElementById("meteor21");
+    	const meteor3 = document.getElementById("meteor3");
+    	const meteor31 = document.getElementById("meteor31");
+		
 		dragon.textContent = `\u{1f409}`;
 		meteor1.textContent = `\u{2604}\u{fe0f}`;
 		meteor11.textContent = `\u{2604}\u{fe0f}`;
@@ -308,35 +316,36 @@ function Scode() {
 		meteor21.textContent = `\u{2604}\u{fe0f}`;
 		meteor3.textContent = `\u{2604}\u{fe0f}`;
 		meteor31.textContent = `\u{2604}\u{fe0f}`;
+		
 		hitelm = [Char, meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
 	}
 	else if (document.getElementById("Awv")) {
-		wolf1 = document.getElementById("wolf1");
-		wolf2 = document.getElementById("wolf2");
-		wolf3 = document.getElementById("wolf3");
-		wolf4 = document.getElementById("wolf4");
-		wolf5 = document.getElementById("wolf5");
-		wolf6 = document.getElementById("wolf6");
+		let wolf1 = document.getElementById("wolf1");
+		let wolf2 = document.getElementById("wolf2");
+		let wolf3 = document.getElementById("wolf3");
+		let wolf4 = document.getElementById("wolf4");
+		let wolf5 = document.getElementById("wolf5");
+		let wolf6 = document.getElementById("wolf6");
 
-		wolf01 = document.getElementById("wolfinverse1");
-		wolf02 = document.getElementById("wolfinverse2");
-		wolf03 = document.getElementById("wolfinverse3");
-		wolf04 = document.getElementById("wolfinverse4");
-		wolf05 = document.getElementById("wolfinverse5");
-		wolf06 = document.getElementById("wolfinverse6");
+		let wolf01 = document.getElementById("wolfinverse1");
+		let wolf02 = document.getElementById("wolfinverse2");
+		let wolf03 = document.getElementById("wolfinverse3");
+		let wolf04 = document.getElementById("wolfinverse4");
+		let wolf05 = document.getElementById("wolfinverse5");
+		let wolf06 = document.getElementById("wolfinverse6");
 
-		bush1 = document.getElementById("bush1");
-		bush2 = document.getElementById("bush2");
-		bush3 = document.getElementById("bush3");
-		bush4 = document.getElementById("bush4");
-		bush5 = document.getElementById("bush5");
-		bush6 = document.getElementById("bush6");
-		bush7 = document.getElementById("bush7");
-		bush8 = document.getElementById("bush8");
-		bush9 = document.getElementById("bush9");
-		bush10 = document.getElementById("bush10");
-		bush11 = document.getElementById("bush11");
-		bush12 = document.getElementById("bush12");
+		let bush1 = document.getElementById("bush1");
+		let bush2 = document.getElementById("bush2");
+		let bush3 = document.getElementById("bush3");
+		let bush4 = document.getElementById("bush4");
+		let bush5 = document.getElementById("bush5");
+		let bush6 = document.getElementById("bush6");
+		let bush7 = document.getElementById("bush7");
+		let bush8 = document.getElementById("bush8");
+		let bush9 = document.getElementById("bush9");
+		let bush10 = document.getElementById("bush10");
+		let bush11 = document.getElementById("bush11");
+		let bush12 = document.getElementById("bush12");
 
 		hitelm = [Char, wolf1, wolf2, wolf3, wolf4, wolf5, wolf6, wolf01, wolf02, wolf03, wolf04, wolf05, wolf06];
 	}
@@ -751,5 +760,6 @@ function Scode() {
 		}
 	});
 }
+
 
 
