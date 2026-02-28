@@ -9,10 +9,10 @@ function MainCode() {
 	Skinsemj.textContent = `Skins \u{1f9d0}`
 	Achemj.textContent = `Achievements \u{1f929}`
 	FGemj.textContent = `Green Dragon \u{1f432}`;
-	SGemj.textContent = `Second Game \u{1f43a}`;
+	SGemj.textContent = `Ambush Wolves \u{1f43a}`;
 	TGemj.textContent = `Third Game \u{1f988}`;
 	FoGemj.textContent = `Fourth Game \u{1faa8}`;
-	
+
 	// functions to select skins
 	function characterselect(character) {
 		localStorage.setItem("character", character);		
@@ -32,24 +32,36 @@ function MainCode() {
 	function heartbrselect(damageheart) {
 		localStorage.setItem("damageheart", damageheart);		
 	}
-	
+
 	if (document.getElementById("Achievementpage")) {
-		if (localStorage.getItem("Achnohit") === "true") {
+		if (localStorage.getItem("Achnohitdr") === "true") {
 			Nohitdr.textContent = `\u{1f496}`;
 			}
 		if (localStorage.getItem("Achbtdr") === "true") {
 			Beatdr.textContent = `\u{1f624}`;
-			}	
+			}
+		if (localStorage.getItem("Achnohitwv") === "true") {
+			Nohitwv.textContent = `\u{1f60f}`;
+			}
+		if (localStorage.getItem("Achbtwv") === "true") {
+			Beatwv.textContent = `\u{1f47b}`;
+			}
 	}
 
 	if (document.getElementById("Skinpage")) {
 
-		if (localStorage.getItem("Achnohit") === "true") {
+		if (localStorage.getItem("Achnohitdr") === "true") {
 			Nohitdr.classList.remove("hidden")
-		}
+			}
 		if (localStorage.getItem("Achbtdr") === "true") {
 			Beatdr.classList.remove("hidden")
-		}
+			}
+		if (localStorage.getItem("Achnohitwv") === "true") {
+			Nohitwv.classList.remove("hidden")
+			}
+		if (localStorage.getItem("Achbtwv") === "true") {
+			Beatwv.classList.remove("hidden")
+			}
 	
 		const faceskins = document.querySelectorAll(".faces p");
 		const victoryskins = document.querySelectorAll(".victory p");
@@ -78,7 +90,9 @@ function MainCode() {
 		Defaultheartbr.textContent = `\u{fe0f}\u{1f494}`;
 		Cowboy.textContent = `\u{1f920}`;
 		Beatdr.textContent = `\u{1f624}`;
-		Nohitdr.textContent = `\u{1f496}`
+		Nohitdr.textContent = `\u{1f496}`;
+		Beatwv.textContent = `\u{1f47b}`;
+		Nohitwv.textContent = `\u{1f60f}`
 
 
 		faceskins.forEach(skin => {
@@ -207,17 +221,18 @@ function MainCode() {
 
 
 function Scode() {
-		
-	let time = 90;	 										// Initial time
+	
+	let time = 90;	 																			// Initial time
 	let timeid;
 	let StarterTime;
 	let StoredTime = 0;
-	const hitelm = [Char, meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
+	let hitelm = []																				// elements that have hitbox
+	let obstacles = []																			// elements that hit the player
 	let pas = "false"																			// checks if the game is paused or no
-	let won = "true"																			// checks if the player have won or no
-	let over = "false"																			// checks if the player have died or no
-	let inv = "false";																			// inv controls whenever the player is invunerable
+	let unpas = "true"																			// checks if the game can be paused or no
+	let inv = "true";																			// inv controls whenever the player is invunerable
 	let meteorspeed = 6;
+	let wvspeed = 4;
 	let changehitbox = "false";																	// To change the hitbox depending if the meteor is going up or down (as it rotates 180	deegres)
 	let cnt = 0;																				// A countdown (in this case used to count the hits that the player have recieved)
 	let hit = localStorage.getItem("hit");														// Save the show hitbox setting, so the player dont have to put it on every time the page get reloaded
@@ -240,7 +255,8 @@ function Scode() {
 				one.classList.add("hidden")
 				start.classList.remove("hidden")
 				startTime();																		// Stars the timer after the 3,2,1,start
-				won = "false"
+				unpas = "false"
+				inv = "false"
 			}, 1000)
 		}, 1000)
 	}, 1000)
@@ -259,10 +275,16 @@ function Scode() {
 				clearInterval(timeid);
 			}
 			else {
-				drattack();										// call the drattack fuction every second
+				if (document.getElementById("Gdr")) {
+					drattack();									// call the drattack fuction every second
+				}
+				else if (document.getElementById("Awv")) {
+					wvattack();
+				}
 			}
 			if (time <= 60) {									// After 30 seconds, meteors will go faster to increase a bit the difficulty and make the game more exciting
 				meteorspeed = 4;
+				vwspeed = 2;
 			}
 			let minutes = Math.floor(time / 60); 
 			let seconds = time % 60;							// if its multiple of 60, it will give 0
@@ -276,22 +298,63 @@ function Scode() {
 	heartcontainer1.textContent = `${heartcontainer}`
 	heartcontainer2.textContent = `${heartcontainer}`
 	heartcontainer3.textContent = `${heartcontainer}`
-	pause.textContent = `\u{23f8}\u{fe0f}`;			
-	dragon.textContent = `\u{1f409}`;
-	meteor1.textContent = `\u{2604}\u{fe0f}`;
-	meteor11.textContent = `\u{2604}\u{fe0f}`;
-	meteor2.textContent = `\u{2604}\u{fe0f}`;
-	meteor21.textContent = `\u{2604}\u{fe0f}`;
-	meteor3.textContent = `\u{2604}\u{fe0f}`;
-	meteor31.textContent = `\u{2604}\u{fe0f}`;
-	
+	pause.textContent = `\u{23f8}\u{fe0f}`;
+
+	if (document.getElementById("Gdr")) {			
+		dragon.textContent = `\u{1f409}`;
+		meteor1.textContent = `\u{2604}\u{fe0f}`;
+		meteor11.textContent = `\u{2604}\u{fe0f}`;
+		meteor2.textContent = `\u{2604}\u{fe0f}`;
+		meteor21.textContent = `\u{2604}\u{fe0f}`;
+		meteor3.textContent = `\u{2604}\u{fe0f}`;
+		meteor31.textContent = `\u{2604}\u{fe0f}`;
+		hitelm = [Char, meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
+	}
+	else if (document.getElementById("Awv")) {
+		wolf1 = document.getElementById("wolf1");
+		wolf2 = document.getElementById("wolf2");
+		wolf3 = document.getElementById("wolf3");
+		wolf4 = document.getElementById("wolf4");
+		wolf5 = document.getElementById("wolf5");
+		wolf6 = document.getElementById("wolf6");
+
+		wolf01 = document.getElementById("wolfinverse1");
+		wolf02 = document.getElementById("wolfinverse2");
+		wolf03 = document.getElementById("wolfinverse3");
+		wolf04 = document.getElementById("wolfinverse4");
+		wolf05 = document.getElementById("wolfinverse5");
+		wolf06 = document.getElementById("wolfinverse6");
+
+		bush1 = document.getElementById("bush1");
+		bush2 = document.getElementById("bush2");
+		bush3 = document.getElementById("bush3");
+		bush4 = document.getElementById("bush4");
+		bush5 = document.getElementById("bush5");
+		bush6 = document.getElementById("bush6");
+		bush7 = document.getElementById("bush7");
+		bush8 = document.getElementById("bush8");
+		bush9 = document.getElementById("bush9");
+		bush10 = document.getElementById("bush10");
+		bush11 = document.getElementById("bush11");
+		bush12 = document.getElementById("bush12");
+
+		hitelm = [Char, wolf1, wolf2, wolf3, wolf4, wolf5, wolf6, wolf01, wolf02, wolf03, wolf04, wolf05, wolf06];
+	}
+
 	// variables for the function Move
-	let x = 0;
-	let y = 0;
+	let x = 40;
+	let y = 20;
 	let up = false;
 	let right = false;
 	let left = false;
 	let down = false;
+	Char.classList.add("notr")
+	setTimeout(() => {
+		Move()
+		setTimeout(() => {
+			Char.classList.remove("notr")
+		}, 0.1)
+	}, 0.1)
 
 	if (hit === "true") {
 		ShowHitbox();
@@ -307,18 +370,30 @@ function Scode() {
     	const rect2 = obj2.getBoundingClientRect(); // Meteorito
     	const w = rect2.width;
     	const h = rect2.height;
-    	
-    	// padding to delete the irrelevant part of the object hitbox
-    	let paddingTop = h * 0.50; 
-    	let paddingRight = w * 0.40; 
+    	let paddingTop = h * 0.10; 
+    	let paddingRight = w * 0.10; 
     	let paddingBottom = h * 0.10; 
     	let paddingLeft = w * 0.10;
+    	
+    	// padding to delete the irrelevant part of the object hitbox
+    	if (document.getElementById("Gdr")) {
+    		paddingTop = h * 0.50; 
+    		paddingRight = w * 0.40; 
+    		paddingBottom = h * 0.10; 
+    		paddingLeft = w * 0.10;
     
-    	if (changehitbox === "true") {
-    		paddingTop = h * 0.10; 
+    		if (changehitbox === "true") {
+    			paddingTop = h * 0.10; 
+    			paddingRight = w * 0.10; 
+    			paddingBottom = h * 0.50; 
+    			paddingLeft = w * 0.40;
+    		}
+    	}
+    	else if (document.getElementById("Awv")) {
+			paddingTop = h * 0.50; 
     		paddingRight = w * 0.10; 
     		paddingBottom = h * 0.50; 
-    		paddingLeft = w * 0.40;
+    		paddingLeft = w * 0.10;
     	}
     	return !(
        		rect1.right < (rect2.left + paddingLeft) || 
@@ -329,7 +404,12 @@ function Scode() {
 	}
 
     const collisionInterval = setInterval(() => {
-    	const obstacles = [meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
+    	if (document.getElementById("Gdr")) {
+ 	   		obstacles = [meteor1, meteor11, meteor2, meteor21, meteor3, meteor31];
+    	}
+    	if (document.getElementById("Awv")) {
+ 	   		obstacles = [wolf1, wolf2, wolf3, wolf4, wolf5, wolf6, wolf01, wolf02, wolf03, wolf04, wolf05, wolf06];
+    	}
     	obstacles.forEach(m => {
     	    if (checkCollision(Char, m)) {
     	    	console.log("Hit by", m.id);
@@ -398,7 +478,77 @@ function Scode() {
 			}
 		}
 	}
-	
+// The wvattack fuction, first checks if the wolf is still attacking and only act if it is not. Then there is a 50% chance to start an attack. They can come from both direction but not as the same time.
+	function wvattack() {
+		const launchwolf = (wolf, inverse, bush) => {
+			if (wolf.getAttribute('flying') === "true") return; 							
+	 		if (getRandomInt(2) === 0) {
+	 			
+	 			bush.style.transform = "scale(1.3)"
+	 			wolf.classList.remove("notr")
+	 			wolf.classList.remove("hidden")
+	 			wolf.setAttribute('flying', "true");
+	 			
+	 			setTimeout(() => {
+					bush.style.transform = "scale(1)"
+	 				wolf.style.transition = `transform ${wvspeed}s ease`;						
+	 				let xmove = inverse ? "-85vw" : "85vw";
+	 				wolf.style.transform = `translate(${xmove})`;
+	 			}, 1500)
+
+	 			setTimeout(() => {
+		 			wolf.classList.add("notr")
+		 			wolf.classList.add("hidden")
+		 			wolf.style.transition = `transform 0s ease`;
+		 			wolf.style.transform = `translate(0, 0)`;
+	 			
+	 				setTimeout(() => {
+                		wolf.setAttribute('flying', "false");
+                	}, 500)
+                
+                }, (1000 * wvspeed) + 1500);
+            }
+        }
+		if (getRandomInt(2) === 0) {												
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf1, false, bush1)
+			}
+			else {
+				launchwolf(wolf01, true, bush7)
+
+			}
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf2, false, bush2)
+			}
+			else {
+				launchwolf(wolf02, true, bush8)
+			}
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf3, false, bush3)
+			}
+			else {
+				launchwolf(wolf03, true, bush9)
+			}
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf4, false, bush4)
+			}
+			else {
+				launchwolf(wolf04, true, bush10)
+			}
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf5, false, bush5)
+			}
+			else {
+				launchwolf(wolf05, true, bush11)
+			}
+			if (getRandomInt(2) === 0) {
+				launchwolf(wolf6, false, bush6)
+			}
+			else {
+				launchwolf(wolf06, true, bush12)
+			}
+		}
+	}	
 	// Make player invurnable for x amount of time and changes oppacity to give the effect, also change the emoji face to the hurt one.
 	function hurt() {
 		inv = "true";
@@ -446,7 +596,7 @@ function Scode() {
 		startTime()
 	}
 	function Pause() {
-		if (won === "true" || over === "true") return;
+		if (unpas === "true") return;
 		StoredTime += Math.floor((Date.now() - StarterTime) / 1000);	// Store the time at the moment of pause  
 		clearInterval(timeid);
 		inv = "true";
@@ -460,13 +610,21 @@ function Scode() {
 	}	
 
 	function Winner() {
-		Char.textContent = `${wincharacter}`
-		if (cnt === 0) {
-			localStorage.setItem("Achnohit", "true");
+		Char.textContent = `${wincharacter}`;
+		if (document.getElementById("Gdr")) {
+			if (cnt === 0) {
+				localStorage.setItem("Achnohitdr", "true");
+			}
+			localStorage.setItem("Achbtdr", "true");
 		}
-		localStorage.setItem("Achbtdr", "true");
-		won = "true"
-		inv = "true"
+		else if (document.getElementById("Awv")) {
+			if (cnt === 0) {
+				localStorage.setItem("Achnohitwv", "true");
+			}
+			localStorage.setItem("Achbtwv", "true");
+		}
+		unpas = "true";
+		inv = "true";
 		blackscreen.classList.remove("hidden");
 		Win.classList.remove("hidden");
 		PlayA.classList.remove("hidden");
@@ -480,7 +638,7 @@ function Scode() {
 	}
 
 	function Gameover() {
-		over = "true"
+		unpas = "true"
 		blackscreen.classList.remove("hidden");
 		GameO.classList.remove("hidden");
 		Retry.classList.remove("hidden");
@@ -503,44 +661,72 @@ function Scode() {
 	});
 
 	function ShowHitbox() {
-	const yes = (cnthit % 2 === 0);
-    hitelm.forEach(obj => obj?.classList.toggle("hitbox", yes));
-    localStorage.setItem("hit", yes);
-    cnthit++;
+		const yes = (cnthit % 2 === 0);
+    	hitelm.forEach(obj => obj?.classList.toggle("hitbox", yes));
+    	localStorage.setItem("hit", yes);
+    	cnthit++;
 	}
 
 	function Move() {
-		if (up) y-= 8;
-		if (left) x-= 8;
-		if (down) y+= 8;
-		if (right) x+= 8;
-		if (x >= 64) {											// Limits check in multiples of 4, as the initial position and the movement are multiples of 4
-			x = 64
-		} 
-		if (x <= -4) {
-			x = -4
+		if (document.getElementById("Gdr")) {
+			if (up) y-= 8;
+			if (left) x-= 8;
+			if (down) y+= 8;
+			if (right) x+= 8;
+			
+			if (x >= 72) {											// Limits check in multiples of 8, as the initial position and the movement are multiples of 8
+				x = 72
+			} 
+			if (x <= 0) {
+				x = 0
+			}
+			if (y >= 90) {
+				Char.classList.add("notr");
+				wings.classList.add("notr");
+				y = -12
+				setTimeout(() => {
+					Char.classList.remove("notr");
+					wings.classList.remove("notr");
+				}, 10);
+			} 
+			if (y <= -13) {
+				Char.classList.add("notr");
+				wings.classList.add("notr");
+				y = 84
+				setTimeout(() => {
+					Char.classList.remove("notr");
+					wings.classList.remove("notr");
+				}, 10);
+			}
+			wings.style.transform = `translate(${x-43}vw, ${y-20}vh)`
 		}
-		if (y >= 72) {
-			Char.classList.add("notr");
-			wings.classList.add("notr");
-			y = -36
-			setTimeout(() => {
-				Char.classList.remove("notr");
-				wings.classList.remove("notr");
-			}, 10);
-		} 
-		if (y <= -40) {
-			Char.classList.add("notr");
-			wings.classList.add("notr");
-			y = 68
-			setTimeout(() => {
-				Char.classList.remove("notr");
-				wings.classList.remove("notr");
-			}, 10);
+		else if (document.getElementById("Awv")) {
+			if (up) y-= 16;
+			if (down) y+= 16;
+
+			if (y === -12) {
+				y = -20
+			}
+			if (y === 60) {
+				y = 68
+			}
+			if (y >= 69) {
+				Char.classList.add("notr");
+				y = -20
+				setTimeout(() => {
+					Char.classList.remove("notr");
+				}, 10);
+			} 
+			if (y <= -21) {
+				Char.classList.add("notr");
+				y = 68
+				setTimeout(() => {
+					Char.classList.remove("notr");
+				}, 10);
+			}
 		}
 		up = left = down = right = false
 		Char.style.transform = `translate(${x}vw, ${y}vh)`
-		wings.style.transform = `translate(${x}vw, ${y}vh)`
 		}
 	
 
@@ -565,8 +751,3 @@ function Scode() {
 		}
 	});
 }
-
-
-
-
-
